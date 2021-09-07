@@ -1,6 +1,9 @@
+name: Dummy
+
 on:
-  workflow_dispatch:
+  push:
     branches: [ '**' ]
+  workflow_dispatch:
 
 jobs:
   test_job:
