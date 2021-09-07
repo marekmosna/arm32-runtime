@@ -1,0 +1,22 @@
+name: 'ARMv7 runtime'
+description: 'Running environment for armv7 platform'
+inputs:
+  bin-folder:  
+    description: 'Binary folder with tests'
+    required: true
+    default: 'build'
+outputs:
+  test-log: 
+    description: 'path to test log'
+runs:
+  using: 'docker'
+  image: 'docker://arm32v7/alpine:latest'
+  args:
+    - ${{ inputs.bin-folder }}
+  pre-entrypoint: 'apk --no-cache add ca-certificates build-base wget make cmake \
+    && wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
+    && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.29-r0/glibc-2.29-r0.apk \
+    && apk add glibc-2.29-r0.apk \
+    && rm glibc-2.29-r0.apk'
+  entrypoint: 'cmake --build $1 --target test'
+  post-entrypoint: 'echo "::set-output name=test-log::muhehe"'
