@@ -18,6 +18,5 @@ runs:
     && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.29-r0/glibc-2.29-r0.apk \
     && apk add glibc-2.29-r0.apk \
     && rm glibc-2.29-r0.apk'
-  entrypoint: 'cmake --build $1 --target test'
-  post-entrypoint: 'echo "::set-output name=test-log::muhehe"'
-  
+  entrypoint: 'echo "::set-output name=test-log::entrypoint"'
+  post-entrypoint: 'echo "::set-output name=test-log::post-entrypoint"'
