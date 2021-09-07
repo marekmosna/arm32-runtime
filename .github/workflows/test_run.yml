@@ -1,0 +1,12 @@
+on: [push]
+
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    name: armv7 run
+    steps:
+      - name: armv7 action step
+        id: test
+        uses: actions/checkout@v2
+      - name: Run the private action
+        uses: ./
