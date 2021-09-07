@@ -10,13 +10,7 @@ outputs:
     description: 'path to test log'
 runs:
   using: 'docker'
-  image: 'docker://arm32v7/alpine:latest'
+  image: 'Dockerfile'
   args:
     - ${{ inputs.bin-folder }}
-  pre-entrypoint: 'apk --no-cache add ca-certificates build-base wget make cmake \
-    && wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
-    && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.29-r0/glibc-2.29-r0.apk \
-    && apk add glibc-2.29-r0.apk \
-    && rm glibc-2.29-r0.apk'
-  entrypoint: 'echo "::set-output name=test-log::entrypoint"'
-  post-entrypoint: 'echo "::set-output name=test-log::post-entrypoint"'
+  

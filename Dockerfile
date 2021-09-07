@@ -9,4 +9,9 @@ RUN apk --no-cache add ca-certificates build-base wget make cmake \
 	&& apk add glibc-2.29-r0.apk \
 	&& rm glibc-2.29-r0.apk
 
-ENTRYPOINT ["cmake --build $1 --target test"]
+WORKDIR /app
+
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
