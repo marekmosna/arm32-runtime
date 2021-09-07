@@ -20,3 +20,4 @@ runs:
     && rm glibc-2.29-r0.apk'
   entrypoint: 'cmake --build $1 --target test'
   post-entrypoint: 'echo "::set-output name=test-log::muhehe"'
+  
