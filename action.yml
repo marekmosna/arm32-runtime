@@ -1,4 +1,4 @@
-name: 'ARMv7 runtime'
+name: 'ARMv7 action'
 description: 'Running environment for armv7 platform'
 inputs:
   bin-folder:  
