@@ -2,7 +2,7 @@ name: 'ARMv7 action'
 description: 'Running environment for armv7 platform'
 inputs:
   bin-folder:  
-    description: 'Binary folder with tests'
+    description: 'Binary folder'
     required: true
     default: 'build'
 outputs:
